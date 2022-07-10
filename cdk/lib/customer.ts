@@ -17,6 +17,8 @@ export class CustomerStack extends Stack {
       restApiName: "Customer API"
     });
 
-    apiGateway.root.addMethod("GET", new LambdaIntegration(getHealthLambda));
+    apiGateway.root
+      .addResource("/health")
+      .addMethod("GET", new LambdaIntegration(getHealthLambda));
   }
 }

@@ -1,7 +1,12 @@
 import "reflect-metadata";
 import { ILoggerService, LoggerService, LogLevel } from "common";
 import { Container } from "inversify";
-import { HealthController, IHealthController } from "../health";
+import {
+  HealthController,
+  HealthService,
+  IHealthController,
+  IHealthService
+} from "../health";
 
 const container: Container = new Container();
 
@@ -27,6 +32,11 @@ container
 container
   .bind<IHealthController>(keys.IHealthController)
   .to(HealthController)
+  .inSingletonScope();
+
+container
+  .bind<IHealthService>(keys.IHealthService)
+  .to(HealthService)
   .inSingletonScope();
 
 export { container, keys, envConfig };
