@@ -1,0 +1,9 @@
+{
+    "editor.codeActionsOnSave": {
+    },
+    
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "eslint.enable": true,
+    "prettier.configPath": ".prettierrc.json",
+}

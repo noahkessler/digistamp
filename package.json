@@ -1,0 +1,38 @@
+{
+  "name": "digistamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "backend/customer",
+    "backend/merchant",
+    "cdk",
+    "backend/common"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./**/*.ts",
+    "gen:spec": "npm run -ws --if-present gen:spec",
+    "cdk:diff": "npm run -w cdk diff",
+    "cdk:deploy": "npm run -w cdk deploy",
+    "cdk:destroy": "npm run -w cdk destroy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noahkessler/digistamp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noahkessler/digistamp/issues"
+  },
+  "homepage": "https://github.com/noahkessler/digistamp#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.19.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "prettier": "2.7.1"
+  }
+}

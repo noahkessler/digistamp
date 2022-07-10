@@ -1,0 +1,27 @@
+{
+  "name": "cdk",
+  "version": "0.1.0",
+  "bin": {
+    "cdk": "bin/app.js"
+  },
+  "scripts": {
+    "deploy": "BRANCH=$(git symbolic-ref --short HEAD) && cdk deploy --require-approval never --context branch=$BRANCH --all",
+    "diff": "BRANCH=$(git symbolic-ref --short HEAD) && cdk diff --context branch=$BRANCH",
+    "destroy": "BRANCH=$(git symbolic-ref --short HEAD) && cdk destroy -c branch=$BRANCH"
+  },
+  "devDependencies": {
+    "@types/node": "10.17.27",
+    "@types/prettier": "2.6.0",
+    "@types/source-map-support": "^0.5.4",
+    "aws-cdk": "2.31.1",
+    "esbuild": "^0.14.48",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.101",
+    "aws-cdk-lib": "2.31.1",
+    "constructs": "^10.1.43",
+    "source-map-support": "^0.5.21"
+  }
+}
