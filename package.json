@@ -10,7 +10,7 @@
     "backend/common"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run -ws --if-present test",
     "lint": "eslint ./**/*.ts",
     "gen:spec": "npm run -ws --if-present gen:spec",
     "tsc:verify": "npm run -ws --if-present tsc:verify",
