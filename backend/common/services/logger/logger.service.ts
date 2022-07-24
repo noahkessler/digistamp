@@ -21,7 +21,10 @@ export class LoggerService implements ILoggerService {
 
   trace(message: string, data?: object, location?: string): void {
     if (this.logLevel < LogLevel.Trace) return;
-    console.trace(message, data, {
+    /**
+     * console.trace writes to stderr, use log instead
+     */
+    console.log(message, data, {
       location,
       timestamp: new Date().toDateString(),
       correlationId: this.correlationId

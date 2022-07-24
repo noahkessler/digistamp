@@ -7,8 +7,7 @@
     "gen-spec": "./tsoa.ts"
   },
   "scripts": {
-    "tsc:verify": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc:verify": "tsc --noEmit"
   },
   "author": "",
   "license": "ISC",
