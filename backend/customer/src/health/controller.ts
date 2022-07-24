@@ -1,8 +1,8 @@
 import { ILoggerService, LoggerService } from "common";
+import { HealthResponse } from "common/contracts";
 import { inject, injectable } from "inversify";
 import { Get, Route } from "tsoa";
-import { keys } from "../config/container";
-import { HealthResponse } from "./contracts";
+import { keys } from "../config/keys";
 import { IHealthService } from "./service";
 
 export interface IHealthController {

@@ -13,6 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./**/*.ts",
     "gen:spec": "npm run -ws --if-present gen:spec",
+    "tsc:verify": "npm run -ws --if-present tsc:verify",
     "cdk:diff": "npm run -w cdk diff",
     "cdk:deploy": "npm run -w cdk deploy",
     "cdk:destroy": "npm run -w cdk destroy"
@@ -34,5 +35,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "source-map-support": "^0.5.21"
   }
 }

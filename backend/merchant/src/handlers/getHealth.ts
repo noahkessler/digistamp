@@ -1,3 +1,4 @@
+import "source-map-support";
 import { APIGatewayProxyHandler } from "aws-lambda";
 import {
   ILoggerService,
@@ -5,7 +6,8 @@ import {
   SuccessResponse,
   InternalServerError
 } from "common";
-import { container, keys } from "../config/container";
+import { keys } from "../config/keys";
+import { container } from "../config/container";
 import { IHealthController } from "../health";
 
 const logger = container.get<ILoggerService>(LoggerService);
@@ -15,7 +17,8 @@ const healthController = container.get<IHealthController>(
 
 export const handler: APIGatewayProxyHandler = async (event) => {
   logger.setCorrelationId(event.requestContext.requestId);
-  logger.info("getHealth handler called", event);
+  logger.info("getHealth handler called");
+  logger.trace("getHealth event", event);
 
   try {
     const result = healthController.getHealth();

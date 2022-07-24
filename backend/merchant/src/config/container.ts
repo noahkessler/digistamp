@@ -7,18 +7,14 @@ import {
   IHealthController,
   IHealthService
 } from "../health";
+import { keys } from "./keys";
 
 const container: Container = new Container();
 
-// Define keys and environemnt
-const keys = {
-  envConfig: Symbol.for("envConfig"),
-  IHealthController: Symbol.for("IHealthController"),
-  IHealthService: Symbol.for("IHealthService")
-};
-const envConfig = {
+// Define environemnt
+const envConfig = Object.freeze({
   logLevel: (process.env.LogLevel ?? LogLevel.Trace) as LogLevel
-};
+});
 
 // Bind environment config
 container.bind<typeof envConfig>(keys.envConfig).toConstantValue(envConfig);
@@ -29,14 +25,7 @@ container
   .toConstantValue(new LoggerService(envConfig.logLevel));
 
 // Health
-container
-  .bind<IHealthController>(keys.IHealthController)
-  .to(HealthController)
-  .inSingletonScope();
+container.bind<IHealthController>(keys.IHealthController).to(HealthController);
+container.bind<IHealthService>(keys.IHealthService).to(HealthService);
 
-container
-  .bind<IHealthService>(keys.IHealthService)
-  .to(HealthService)
-  .inSingletonScope();
-
-export { container, keys, envConfig };
+export { container };

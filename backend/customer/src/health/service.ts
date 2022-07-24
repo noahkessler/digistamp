@@ -1,6 +1,6 @@
 import { ILoggerService, LoggerService } from "common";
+import { HealthResponse } from "common/contracts";
 import { inject, injectable } from "inversify";
-import { HealthResponse } from "./contracts";
 
 export interface IHealthService {
   getHealth(): HealthResponse;
@@ -14,7 +14,8 @@ export class HealthService implements IHealthService {
     this.logger.trace("getHealth", null, this.constructor.name);
 
     return {
-      status: "Healthy"
+      status: "Healthy",
+      service: "Customer"
     };
   }
 }

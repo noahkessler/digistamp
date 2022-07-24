@@ -7,18 +7,14 @@ export class CustomerStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const getHealthLambda = new CustomerLambda(
-      this,
-      "GetHealthLambda - Customer",
-      "getHealth.ts"
-    );
+    const getHealthLambda = new CustomerLambda(this, "GetHealth", "getHealth");
 
     const apiGateway = new RestApi(this, "CustomerAPI", {
       restApiName: "Customer API"
     });
 
     apiGateway.root
-      .addResource("/health")
+      .addResource("health")
       .addMethod("GET", new LambdaIntegration(getHealthLambda));
   }
 }

@@ -7,18 +7,14 @@ export class MerchantStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const getHealthLambda = new MerchantLambda(
-      this,
-      "GetHealthLambda Merchant",
-      "getHealth.ts"
-    );
+    const getHealthLambda = new MerchantLambda(this, "GetHealth", "getHealth");
 
     const apiGateway = new RestApi(this, "MerchantAPI", {
       restApiName: "Merchant API"
     });
 
     apiGateway.root
-      .addResource("/health")
+      .addResource("health")
       .addMethod("GET", new LambdaIntegration(getHealthLambda));
   }
 }
